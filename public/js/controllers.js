@@ -15,4 +15,14 @@ angular.module('myApp.controllers', []).
   }).
   controller('MyCtrl2', function ($scope) {
     // write Ctrl here
+  }).
+  controller('CommandLineCtrl', function ($scope) {
+    $scope.interaction_text = 'initial text';
+    $scope.execute = function () {
+      if ($scope.command_line == 'login') {
+        $scope.interaction_text = "wana login?";
+      } else {
+        $scope.interaction_text = "command not known";
+      };
+    };
   });

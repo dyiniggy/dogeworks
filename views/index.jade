@@ -1,19 +1,36 @@
 extends layout
 
 block body
-  div(ng-controller='AppCtrl')
-    h2 Hello {{name}}
-    ul.menu
-      li
-        a(href='view1') view1
-      li
-        a(href='view2') view2
+  div.container
+    div.row
+      div.col-md-4 col-md-4
+      div.col-md-8 col-md-8
+    div.row new row div
+      div.col-md-2 col-md-2
+      div.col-md-4 col-md-4
+    div.row
+      div(ng-controller='AppCtrl')
+        h2 Hello {{name}}
+        ul.menu
+          li
+            a(href='view1') view1
+          li
+            a(href='view2') view2
 
-    div(ng-view)
+        div(ng-view)
 
-    div
-      | Angular Socket.io seed app: v
-      span(app-version)
+        div
+          | Angular Socket.io seed app: v
+          span(app-version)
+    div.row
+      div(class='col-md-6 col-md-offset-3')
+        div(ng-controller='CommandLineCtrl')
+          input(type='text', class='form-control', ng-model='command_line')
+          button(type='button', class='btn btn-primary btn-md', ng-click='execute()') execute
+          p {{interaction_text}}
+          {{command_line}}
+
+
 
   script(src='/socket.io/socket.io.js')
   script(src='bower_components/angular/angular.js')
