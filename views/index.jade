@@ -2,33 +2,44 @@ extends layout
 
 block body
   div.container
-    div.row
-      div.col-md-4 col-md-4
-      div.col-md-8 col-md-8
-    div.row new row div
-      div.col-md-2 col-md-2
-      div.col-md-4 col-md-4
-    div.row
-      div(ng-controller='AppCtrl')
-        h2 Hello {{name}}
-        ul.menu
-          li
-            a(href='view1') view1
-          li
-            a(href='view2') view2
+    //
+      div.row
+        div.col-md-4 col-md-4
+        div.col-md-8 col-md-8
+      div.row new row div
+        div.col-md-2 col-md-2
+        div.col-md-4 col-md-4
+      div.row
+        div(ng-controller='AppCtrl')
+          h2 Hello {{name}}
+          ul.menu
+            li
+              a(href='view1') view1
+            li
+              a(href='view2') view2
 
-        div(ng-view)
+          div(ng-view)
 
-        div
-          | Angular Socket.io seed app: v
-          span(app-version)
+          div
+            | Angular Socket.io seed app: v
+            span(app-version)
     div.row
       div(class='col-md-6 col-md-offset-3')
-        div(ng-controller='CommandLineCtrl')
-          input(type='text', class='form-control', ng-model='command_line')
-          button(type='button', class='btn btn-primary btn-md', ng-click='execute()') execute
-          p {{interaction_text}}
-          {{command_line}}
+        h2 Let's play a game
+    div(ng-controller='CommandLineCtrl')
+      div.row
+        div(class='col-md-6 col-md-offset-3')
+          form(ng-submit='execute()')
+            input(type='text', class='form-control', ng-model='command_line')
+                //
+                  td.col-md-2
+                    button(type='submit', class='btn btn-primary btn-md') execute
+      div.row
+        div(class='col-md-6 col-md-offset-3')
+          p
+          ul.ul_none
+            li(ng-repeat='item in interaction_text|reverse'){{item}}
+
 
 
 
